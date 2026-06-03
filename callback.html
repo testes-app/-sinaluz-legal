@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>TikTok Callback</title></head>
+<body>
+<p>Autorizando...</p>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const state = params.get('state');
+  if (code) {
+    window.location.href = 'http://localhost:8080/callback?code=' + code + (state ? '&state=' + state : '');
+  } else {
+    document.body.innerHTML = '<p>Erro: código não encontrado.</p>';
+  }
+</script>
+</body>
+</html>
