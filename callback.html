@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"><title>TikTok Callback</title></head>
-<body>
-<p>Autorizando...</p>
+<body style="font-family:sans-serif;padding:40px;background:#0a0a1a;color:#fff">
+<h2>TikTok Authorization</h2>
+<div id="result"></div>
 <script>
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
-  const state = params.get('state');
+  const div = document.getElementById('result');
   if (code) {
-    window.location.href = 'http://localhost:8080/callback?code=' + code + (state ? '&state=' + state : '');
+    div.innerHTML = '<p style="color:#00ff88">✓ Autorizado!</p><p>Copie a URL completa abaixo e cole no terminal:</p><textarea style="width:100%;height:80px;background:#1a1a2e;color:#fff;border:1px solid #333;padding:8px;font-size:12px">' + window.location.href + '</textarea>';
   } else {
-    document.body.innerHTML = '<p>Erro: código não encontrado.</p>';
+    div.innerHTML = '<p style="color:red">Erro: código não encontrado.</p>';
   }
 </script>
 </body>
